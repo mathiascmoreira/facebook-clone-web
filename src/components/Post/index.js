@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import api from '../../services/api';
+
+import {CommentPost, LikePostWhite, LikePostBlue, LikeCount, SharedWithPublic, SharedWithFriends, PostEllipsis} from '../Icons';
 
 import {
     Container,
@@ -11,18 +12,14 @@ import {
     LikesCount,
     ActionButtons,
     ActionButton,
-    ActionLikeIcon,
-    ActionCommentIcon,
     Comments,
     Comment,
-    LikeIcon,
     CommentsCount,
     NewComment
 
 } from './styles';
 
 import profile from '../../assets/profile.jpg';
-import { FaEllipsisH, FaGlobeAmericas } from 'react-icons/fa'
 
 export default function ({ post }) {
 
@@ -38,17 +35,16 @@ export default function ({ post }) {
 
     return (
         <Container>
-
             <Header>
                 <section>
                     <img src={profile} />
                     <span>
                         <h5>{post.user.name}</h5>
-                        <time>{post.postedAt} .  <FaGlobeAmericas /></time>
+                        <time>{post.postedAt} . {post.isPublic ? <SharedWithPublic /> : <SharedWithFriends />} </time>
                     </span>
                 </section>
 
-                <FaEllipsisH />
+                <PostEllipsis />
             </Header>
 
             <Content>
@@ -57,7 +53,7 @@ export default function ({ post }) {
 
             <Counts>
                 <LikesCount hasLikes={post.hasLikes}>
-                    <LikeIcon />
+                    <LikeCount />
                     <p> {post.likesCount} </p>
                 </LikesCount>
                 <CommentsCount hasComments={post.hasComments}>
@@ -66,13 +62,13 @@ export default function ({ post }) {
             </Counts>
             <ActionButtons>
                 <ActionButton hasOwnLike={post.hasOwnLike}>
-                    <ActionLikeIcon hasOwnLike={post.hasOwnLike} />
+                    {post.hasOwnLike? <LikePostBlue /> : <LikePostWhite />}
                     Like
-                                </ActionButton>
+                </ActionButton>
                 <ActionButton onClick={() => handleCommentsCountClick(post)}>
-                    <ActionCommentIcon />
+                    <CommentPost/>
                     Comment
-                                </ActionButton>
+                </ActionButton>
             </ActionButtons>
             <Comments showComments={post.showComments}>
                 {

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import {
     Container,
     Content,
-    FacebookIcon,
     SearchField,
     TextButton,
     IconButton,
@@ -15,21 +14,19 @@ import {
     CreatePoputItem,
     OtherOptionsPopup
 } from './styles';
-import { GrFacebook, GrFlagFill } from 'react-icons/gr'
-import { GoSearch } from 'react-icons/go'
-import {
-    FaUserFriends,
-    FaFacebookMessenger,
-    FaBell,
-    FaQuestionCircle,
-    FaCaretDown,
-    FaBullhorn,
-    FaUsers,
-    FaCalendarAlt,
-    FaStore
-} from 'react-icons/fa'
-import profile from '../../assets/profile.jpg';
 
+
+import { 
+    FriendRequests, 
+    Messages, 
+    Notifications, 
+    QuickHelp, 
+    ArrowDown, 
+    FacebookIcon, 
+    Search 
+} from '../Icons';
+
+import profile from '../../assets/profile.jpg';
 
 export default function Header() {
 
@@ -38,13 +35,13 @@ export default function Header() {
         <Container>
             <Content>
                 <SearchFieldGroup>
-                    <FacebookIcon to="/dashboard">
-                        <GrFacebook />
-                    </FacebookIcon>
+                    <Link to="/dashboard">
+                        <FacebookIcon />
+                    </Link>
                     <SearchField>
                         <input placeholder="Pesquisar" />
                         <Link>
-                            <GoSearch />
+                            <Search />
                         </Link>
                     </SearchField>
                 </SearchFieldGroup>
@@ -112,21 +109,21 @@ export default function Header() {
                     </TextButton>
                     <NotificationButtons>
                         <IconButton>
-                            <FaUserFriends />
+                            <FriendRequests />
                         </IconButton>
                         <IconButton>
-                            <FaFacebookMessenger />
+                            <Messages />
                         </IconButton>
                         <IconButton>
-                            <FaBell />
+                            <Notifications />
                         </IconButton>
                     </NotificationButtons>
                     <IconButton>
-                        <FaQuestionCircle />
+                        <QuickHelp />
                     </IconButton>
                     <IconButton>
-                        <FaCaretDown />
-                        {/* <OtherOptionsPopup>
+                        <ArrowDown />
+                        {/*  <OtherOptionsPopup>
                             <section>
                                 <li>Seus grupos</li>
                             </section>

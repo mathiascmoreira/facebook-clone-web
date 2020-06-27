@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import ZlLXmeC1YY from '../../assets/ZlLXmeC1YY.png';
-import { darken } from 'polished';
 
 export const LoginHeader = styled.div`
     height: 82px;
@@ -14,23 +12,6 @@ export const HeaderContent = styled.div`
     padding-top: 13px;
     width: 980px;
     margin: 0 auto;
-
-
-`
-
-export const HeaderIcon = styled.i`
-
-    display: inline-block;
-    width: 170px;
-    height: 34px;
-    background-size: auto;
-    background-repeat: no-repeat;           
-    position: relative;
-    vertical-align: top;
-    margin-right: 6px;
-    
-    background-position: 0 -196px;
-    background-image: url(${ZlLXmeC1YY});
 `
 
 export const HeaderControls = styled.form`

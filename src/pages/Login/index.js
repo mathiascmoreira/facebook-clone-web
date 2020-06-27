@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import { LoginHeader, HeaderContent, HeaderIcon, HeaderControls, LoginBody, BodyContent, BodyControls, BodyPresentation, BirthDayControls, GenderControls } from './styles';
+import { LoginHeader, HeaderContent, HeaderControls, LoginBody, BodyContent, BodyControls, BodyPresentation, BirthDayControls, GenderControls } from './styles';
 import {Link} from 'react-router-dom';
 
 import {signInRequest} from '../../store/modules/auth/actions';
+
+import {FacebookName} from '../../components/Icons'
 
 export default function Login() {
 
@@ -26,7 +28,7 @@ export default function Login() {
         <>
             <LoginHeader>
                 <HeaderContent >
-                    <HeaderIcon />
+                    <FacebookName />
                     <HeaderControls onSubmit={handleSubmit}>
                         <span>
                             <label>Email ou telefone</label>

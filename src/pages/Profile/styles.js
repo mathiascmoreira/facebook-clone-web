@@ -1,12 +1,6 @@
 import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import cEZxyDgx6Ho from '../../assets/cEZxyDgx6Ho.png';
-import QkYdDnD16 from '../../assets/QkYdDnD16.png';
-import KnYDHb9XAAp from '../../assets/KnYDHb9XAAp.png';
-import frjXXnCCUb5 from '../../assets/frjXXnCCUb5.png';
-
-
 import { darken } from 'polished';
 
 
@@ -73,7 +67,7 @@ export const ActionButtons = styled.section`
 
     span {
         display: flex;
-    flex-direction: row;
+        flex-direction: row;
 
         margin-right: 15px;
         border-radius: 2px;
@@ -93,70 +87,20 @@ export const ActionButtons = styled.section`
             font-size: 12px;
             font-weight: bold;
 
+            p {
+                margin-left: 6px;
+            }
+
+            /* i {
+                margin-right: 6px;
+            } */
+
             &:hover {
 
             }
 
         }
     }
-
-`
-
-export const AddFriendIcon = styled.i`
-
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-size: auto;
-    background-repeat: no-repeat;           
-    position: relative;
-    vertical-align: top;
-    margin-right: 6px;
-
-    background-position: 0 0;
-    background-image: url(${cEZxyDgx6Ho});
-`
-
-export const FollowIcon = styled.i`
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-size: auto;
-    background-repeat: no-repeat;           
-    position: relative;
-    vertical-align: top;
-    margin-right: 6px;
-
-    background-position: -461px -71px;
-    background-image: url(${QkYdDnD16});
-
-`
-
-export const MessageIcon = styled.i`
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-size: auto;
-    background-repeat: no-repeat;           
-    position: relative;
-    vertical-align: top;
-    margin-right: 6px;
-
-    background-position: 0 -182px;
-    background-image: url(${KnYDHb9XAAp});
-`
-
-export const MoreOptionButton = styled.i`
-    display: inline-block;
-    width: 16px;
-    height: 16px;
-    background-size: auto;
-    background-repeat: no-repeat;           
-    position: relative;
-    vertical-align: top;
-
-    background-position: -51px -2266px;
-    background-image: url(${frjXXnCCUb5});
 `
 
 export const ProfileMenu = styled.div`
@@ -207,13 +151,13 @@ export const Posts = styled.div`
     
 `
 
-export const Post = styled.div`
-    background: #666;
-    width: 514px;
-    margin: 0 auto;
-    background: #fff;
-    margin-bottom: 10px;
-`
+// export const Post = styled.div`
+//     background: #666;
+//     width: 514px;
+//     margin: 0 auto;
+//     background: #fff;
+//     margin-bottom: 10px;
+// `
 
 export const TimeLineIntro = styled.div`
     background: #fff;

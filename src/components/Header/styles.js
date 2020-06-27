@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 import { darken } from 'polished';
-import { Link } from 'react-router-dom';
-
 
 export const Container = styled.div`
     background: #4267b2;
@@ -20,20 +18,9 @@ export const SearchFieldGroup = styled.div`
     display: flex;
     align-items: center;
     flex: 1;
-`
 
-export const Buttons = styled.div`
-    display: flex;
-    align-items: center;
-`
-
-export const FacebookIcon = styled(Link)`
-    height: 24px;
-
-    svg{
-        width: 24px;
-        height: 24px;
-        color: #fff;
+    a {
+        display: flex;
     }
 `
 
@@ -54,12 +41,11 @@ export const SearchField = styled.span`
     }
 
     a {
-        display: flex;
         align-items: center;
         justify-content: center;
         border-radius: 2px;
         position: absolute;
-        right:12px;
+        right: 12px;
         width: 46px;
         height: 24px;
         background: ${darken(0.04, '#fff')};
@@ -69,12 +55,11 @@ export const SearchField = styled.span`
             background: ${darken(0.1, '#fff')}
         }
     }
+`
 
-    svg {
-        width:  16px;
-        height: 16px;
-        color: #4b4f56;
-    }
+export const Buttons = styled.div`
+    display: flex;
+    align-items: center;
 `
 
 export const TextButton = styled.button`
@@ -117,26 +102,29 @@ export const TextButton = styled.button`
 `
 
 export const IconButton = styled.button`
-    
-    height: 24px;
-    padding: 0 9px;
+    display: flex;
     border: 0;
     background: none;
+    padding: 0 9px;
     position: relative;
 
-    svg {
-        width: 20px;
-        height: 20px;
-        color: rgb(0,0,0, 0.6);
+    i {
+        opacity: 0.6;
 
         &:hover {
-            color: rgba(0, 0, 0, 0.8);
+            opacity: 0.8;
         }
+
+         /*
+          PRA DEIXAR BRANCO
+          opacity: 1;
+          filter: brightness(0) invert(1);   
+          */ 
     }
+
 `
 
 export const NotificationButtons = styled.span`
-
     display: flex;
     align-items: center;
 
@@ -144,7 +132,7 @@ export const NotificationButtons = styled.span`
         content:'';
         height: 18px;
         border-right: 1px solid rgba(0, 0, 0, .1);
-    }
+    } 
 `
 
 

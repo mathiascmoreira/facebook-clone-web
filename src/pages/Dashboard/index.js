@@ -9,6 +9,7 @@ import pt from 'date-fns/locale/pt';
 
 import {
     Scroll,
+    Posts
    
 } from './styles';
 
@@ -44,9 +45,10 @@ export default function Dashboard() {
     return (
         <Wrapper>
             <Header />
-            <Scroll>
-                { posts.map(post => <Post key={post.id} post={post} /> ) }
-            </Scroll>
+            <Posts>
+            { posts.map(post => <Post key={post.id} post={post} /> ) }
+            </Posts>
+               
         </Wrapper>
     )
 }

@@ -1,17 +1,12 @@
 import styled from 'styled-components';
 import { darken, transparentize } from 'polished';
-import OR1DCQlFvIn from '../../assets/OR1DCQlFvIn.png';
-import piy8Uulmo7R from '../../assets/piy8Uulmo7R.png';
-import h51cIRDcA8u from '../../assets/h51cIRDcA8u.png';
-import k8IkhLskuT from '../../assets/k8IkhLskuT.png';
-
 
 export const Container = styled.div`
 
     width: 500px;
     margin: 0 auto;
     background: #fff;
-    margin-top: 20px;
+    margin-bottom: 20px;
     padding: 12px 12px 0;
 
     border: 1px solid #dddfe2;
@@ -44,11 +39,11 @@ export const Header = styled.div`
             time {
                 margin-top: 4px;
                 display: flex;
-                align-items: flex-end;
+                align-items: center;
                 font-size: 12px;
                 font-weight: normal;
 
-                svg {
+                i {
                     margin-left: 4px;
                 }
             }
@@ -75,23 +70,11 @@ export const Counts = styled.div`
 export const LikesCount = styled.section`
     display: ${props => props.hasLikes ? 'flex' : 'none'};
     align-items: center;
-    p {
-        margin-left: 8px;
+
+    i {
+        margin-right: 4px;
     }
 `
-
-export const LikeIcon = styled.i`
-        width: 18px;
-        height: 18px;
-        background-position: -68px -1138px;
-        background-image:  url(${OR1DCQlFvIn});
-        background-size: auto;
-        background-repeat: no-repeat;           
-        position: relative;
-        vertical-align: top;
-        margin-right: -3px;
-`
-
 
 
 export const CommentsCount = styled.section`
@@ -110,6 +93,8 @@ export const ActionButtons = styled.div`
     padding: 4px 0;
     border-top: 1px solid rgba(0, 0, 0, .1);
     border-bottom: 1px solid rgba(0, 0, 0, .1);
+
+  
 `
 
 export const ActionButton = styled.button`
@@ -125,40 +110,15 @@ export const ActionButton = styled.button`
     height: 32px;
     background: none;
 
+    i {
+        margin-right: 6px;
+    }
+
     &:hover {
         background: ${darken(0.06, '#fff')}
     }
 ` 
 
-
-const ActionIcon = styled.i`
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-    background-size: auto;
-    background-repeat: no-repeat;           
-    position: relative;
-    vertical-align: top;
-    margin-right: 6px;
-`
-
-export const ActionLikeIcon = styled(ActionIcon)`
-   ${({hasOwnLike}) =>  hasOwnLike ?
-        `background-position: -21px -279px;
-         background-image: url(${k8IkhLskuT});` : 
-        `background-position: -19px -443px;
-         background-image: url(${piy8Uulmo7R});`
-    }
-`
-export const ActionCommentIcon = styled(ActionIcon)`
-    background-position: 0 -156px;
-    background-image: url(${h51cIRDcA8u});
-   
-`
-export const ActionShareIcon = styled(ActionIcon)`
-    background-position: -19px -175px;
-    background-image: url(${h51cIRDcA8u});
-`
 
 
 
