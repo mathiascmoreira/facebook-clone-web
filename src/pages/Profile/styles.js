@@ -143,33 +143,73 @@ export const TimeLine = styled.div`
     justify-content: space-between;
    
 `
-export const TimeLineAside = styled.div`    
-    width: 323px;
-`
-
 export const Posts = styled.div`
     
 `
 
-// export const Post = styled.div`
-//     background: #666;
-//     width: 514px;
-//     margin: 0 auto;
-//     background: #fff;
-//     margin-bottom: 10px;
-// `
+export const TimeLineAside = styled.div`    
+    width: 323px;
+
+    div {
+        background-color: #fff;
+    }    
+
+    h1 {
+         display: flex;
+         align-items: center;
+         font-size: 16px;
+         font-weight: normal;
+         line-height: 20px;
+         color: #1c1e21;
+         padding: 12px 0 0 12px;    
+
+        i {
+            margin-right: 8px;
+        } 
+    }
+`
 
 export const TimeLineIntro = styled.div`
-    background: #fff;
+
+    ul {
+        padding: 16px 0 4px 12px;
+    }
+
+    li {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 4px 0;         
+
+        p {
+            display: inline;
+            margin-left: 8px;
+            font-size: 12px;
+            line-height: 16px;
+            color: #1d2129;
+            flex: 1;
+        }
+
+        a {
+            display: inline;
+            color: #385898;
+            cursor: pointer;
+            text-decoration: none;
+        }
+    }
+
+    
+
+   
+
+   
 `
 
 export const TimeLinePhotos = styled.div`
     margin-top: 10px;
-    background: #fff;
 `
 
 export const TimeLineFriends = styled.div`
     margin-top: 10px;
-    background: #fff;
 `
 

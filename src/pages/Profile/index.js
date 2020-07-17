@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { format } from 'date-fns';
 
@@ -8,7 +9,25 @@ import Header from '../../components/Header';
 
 import api from '../../services/api';
 
-import {AddFriend, MessageUser, Follow, ProfileEllipsis} from '../../components/Icons';
+import { formatWorkToDisplay, formatEducationToDisplay, formatRelationshipToDisplay } from '../../services/formatter';
+
+import {
+    AddFriend,
+    MessageUser,
+    Follow,
+    ProfileEllipsis,
+    ProfileFriends,
+    ProfileIntro,
+    ProfilePhotos,
+    ProfileWork,
+    ProfileEducation,
+    ProfileLivesIn,
+    ProfileFromLocation,
+    ProfileRelationshipStatus,
+    ProfileFollowedBy,
+    ProfileJoinedAt
+} from '../../components/Icons';
+
 
 import {
     Scroll,
@@ -32,30 +51,37 @@ import Post from '../../components/Post';
 import coverPhoto from '../../assets/coverPhoto.jpg';
 import profile2 from '../../assets/profile2.jpg';
 
-export default function Profile() {
+export default function Profile(props) {
 
-    const user = useSelector(state => state.user.profile);
-
+    const [profile, setProfile] = useState(null);
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         async function loadPosts() {
-            const response = await api.get(`posts/${user.id}`);    
+            const response = await api.get(`profiles/${props.match.params.username}`);
+            const profile = response.data;
 
-            const posts = response.data.map(post => {
-                post.postedAt = format(new Date(post.createdAt), "d 'de' MMMM", { locale: pt });
-                post.hasLikes = post.likesCount > 0;
-                post.hasComments = post.commentsCount > 0;
-                post.showComments = true;
+            console.log('profile buscado do banco', profile);
 
-                return post;
-            })
+            profile.works.map(work => {
+                work.display = formatWorkToDisplay(work);
+                return work;
+            });
 
-            setPosts(posts);
+            profile.educations.map(education => {
+                education.display = formatEducationToDisplay(education);
+                return education;
+            });
+
+            profile.relationship.display = formatRelationshipToDisplay(profile.relationship);
+
+            setProfile(profile);
+
+           
         }
 
         loadPosts();
-    }, [user.id])
+    }, [props.match.params.username])
 
 
     return (
@@ -84,12 +110,12 @@ export default function Profile() {
                                 <button>
                                     <Follow />
                                     <p>Follow</p>
-                                    
-                                    </button>
+
+                                </button>
                                 <button>
                                     <MessageUser />
                                     <p>Message</p>
-                                    </button>
+                                </button>
                                 <button>
                                     <ProfileEllipsis />
                                 </button>
@@ -108,23 +134,29 @@ export default function Profile() {
                     <TimeLine>
                         <TimeLineAside>
                             <TimeLineIntro>
-                                <h1>Intro</h1>
+                                <h1>  <ProfileIntro/>     Intro</h1>
                                 <ul>
-                                    <li>Not Yet Working</li>
-                                    <li>Lives in United States</li>
-                                    <li>From Brazil</li>
-                                    <li>Single</li>
+                                    {profile?.works.map(work => (
+                                        <li> <ProfileWork /> <p>{work.display}<Link>{work.company}</Link></p></li>
+                                    ))}
+                                    {profile?.educations.map(education => (
+                                        <li> <ProfileEducation/> <p>{education.display}<Link>{education.schoolName}</Link></p></li>
+                                    ))}
+                                    <li> <ProfileLivesIn /> <p> Lives in <Link>{profile?.location?.currentLocation}</Link></p></li>
+                                    <li> <ProfileFromLocation /> <p> From <Link>{profile?.location?.fromLocation}</Link></p></li>
+                                    <li> <ProfileRelationshipStatus /> <p>{profile?.relationship?.display}</p></li>
+                                    <li> <ProfileJoinedAt /> <p>Joined at {profile?.joinedAt}</p></li>
                                 </ul>
                             </TimeLineIntro>
                             <TimeLinePhotos>
-                                <h1>Photos</h1>
+                                <h1><ProfilePhotos/> Photos</h1>
                             </TimeLinePhotos>
                             <TimeLineFriends>
-                                <h1>Friends</h1>
+                                <h1><ProfileFriends /> Friends</h1>
                             </TimeLineFriends>
                         </TimeLineAside>
                         <Posts>
-                        { posts.map(post => <Post key={post.id} post={post} /> ) }
+                            {/* { posts.map(post => <Post key={post.id} post={post} /> ) } */}
                         </Posts>
                     </TimeLine>
                 </Content>

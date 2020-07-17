@@ -25,7 +25,7 @@ export default function Dashboard() {
    
     useEffect(() => {
         async function loadPosts() {
-            const response = await api.get('newsfeed');            
+            const response = await api.get('newsfeed');
 
             const posts = response.data.map(post => {
                 post.postedAt = format(new Date(post.createdAt), "d 'de' MMMM", { locale: pt });
