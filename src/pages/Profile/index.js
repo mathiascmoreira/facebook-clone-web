@@ -48,9 +48,6 @@ import {
 import Post from '../../components/Post';
 
 
-import coverPhoto from '../../assets/coverPhoto.jpg';
-import profile2 from '../../assets/profile2.jpg';
-
 export default function Profile(props) {
 
     const [profile, setProfile] = useState(null);
@@ -76,8 +73,6 @@ export default function Profile(props) {
             profile.relationship.display = formatRelationshipToDisplay(profile.relationship);
 
             setProfile(profile);
-
-           
         }
 
         loadPosts();
@@ -86,17 +81,17 @@ export default function Profile(props) {
 
     return (
         <>
-            <Header />
+            <Header profilePicture={profile?.picture?.url}/>
 
             <Scroll>
                 <Content>
-                    <CoverPhotoContainer coverPhoto={coverPhoto}>
+                    <CoverPhotoContainer coverPhoto={profile?.coverPhoto?.url}>
                         <ProfilePicture>
                             <span>
-                                <img src={profile2} />
+                                <img src={profile?.picture?.url} />
                             </span>
 
-                            <p>Shakeeb Aftab</p>
+                            <p>{`${profile?.name} ${profile?.lastName}`}</p>
                         </ProfilePicture>
 
                         <ActionButtons>

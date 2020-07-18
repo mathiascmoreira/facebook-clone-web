@@ -19,8 +19,6 @@ import {
 
 } from './styles';
 
-import profile from '../../assets/profile.jpg';
-
 export default function ({ post }) {
 
     function handleCommentsCountClick(post) {
@@ -37,7 +35,7 @@ export default function ({ post }) {
         <Container>
             <Header>
                 <section>
-                    <img src={profile} />
+                    {/* <img src={profile} /> */}
                     <span>
                         <h5>{post.user.name}</h5>
                         <time>{post.postedAt} . {post.isPublic ? <SharedWithPublic /> : <SharedWithFriends />} </time>
@@ -75,7 +73,7 @@ export default function ({ post }) {
                     post.comments.map(comment => (
 
                         <Comment key={comment.id}>
-                            <img src={profile} />
+                            {/* <img src={profile} /> */}
                             <span>
                                 <p>
                                     <Link>{comment.user.name}</Link> {comment.comment}
@@ -87,7 +85,7 @@ export default function ({ post }) {
                 }
 
                 <NewComment >
-                    <img src={profile} />
+                    {/* <img src={profile} /> */}
                     <input placeholder="Write a comment..." />
                 </NewComment>
 

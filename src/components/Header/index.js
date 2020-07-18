@@ -26,9 +26,7 @@ import {
     Search 
 } from '../Icons';
 
-import profile from '../../assets/profile.jpg';
-
-export default function Header() {
+export default function Header({profilePicture}) {
 
     const name = useSelector(state => state.user.profile.name);
     return (
@@ -47,7 +45,7 @@ export default function Header() {
                 </SearchFieldGroup>
                 <Buttons>
                     <TextButton>
-                        <img src={profile} />
+                        <img src={profilePicture} />
                         <span>{name}</span>
                     </TextButton>
                     <TextButton>
