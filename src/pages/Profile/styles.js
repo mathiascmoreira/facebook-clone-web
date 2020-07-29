@@ -197,19 +197,69 @@ export const TimeLineIntro = styled.div`
             text-decoration: none;
         }
     }
-
-    
-
-   
-
-   
 `
 
 export const TimeLinePhotos = styled.div`
+    display: flex;
+    flex-direction: column;
     margin-top: 10px;
 `
 
-export const TimeLineFriends = styled.div`
-    margin-top: 10px;
+export const TimeLinePhotoList = styled.table`
+    margin-top: 12px;
+
+    td {
+        cursor: pointer; 
+        flex-basis: 0;
+    }
+
+    tr {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    img {
+        width: 101px;
+        height: 101px;
+    }
 `
+
+export const TimeLineFriends = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    
+`
+
+export const TimeLineFriendList = styled.table`
+    margin-top: 12px;
+    td {
+        cursor: pointer; 
+        flex-basis: 0;
+    }
+
+    tr {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    p {
+        font-size: 12px;
+        line-height: 16px;
+        color: #385898;        
+        margin-top: 2px;
+        margin-bottom: 7px;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }  
+
+    img {
+        width: 101px;
+        height: 101px;
+    }
+`
+
+
 

@@ -41,7 +41,9 @@ import {
     TimeLineAside,
     TimeLineIntro,
     TimeLinePhotos,
+    TimeLinePhotoList,
     TimeLineFriends,
+    TimeLineFriendList,
     Posts,
 } from './styles';
 
@@ -51,6 +53,7 @@ import Post from '../../components/Post';
 export default function Profile(props) {
 
     const [profile, setProfile] = useState(null);
+    const [friends, setFriends] = useState(null);
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -58,7 +61,6 @@ export default function Profile(props) {
             const response = await api.get(`profiles/${props.match.params.username}`);
             const profile = response.data;
 
-            console.log('profile buscado do banco', profile);
 
             profile.works.map(work => {
                 work.display = formatWorkToDisplay(work);
@@ -75,13 +77,25 @@ export default function Profile(props) {
             setProfile(profile);
         }
 
+        async function loadFriends() {
+            const response = await api.get(`friendships`);
+            const friends = response.data;
+
+            console.log('buscando lista de amigos', friends);
+
+
+
+            setFriends(friends);
+        }
+
         loadPosts();
+        loadFriends();
     }, [props.match.params.username])
 
 
     return (
         <>
-            <Header profilePicture={profile?.picture?.url}/>
+            <Header profilePicture={profile?.picture?.url} />
 
             <Scroll>
                 <Content>
@@ -129,13 +143,13 @@ export default function Profile(props) {
                     <TimeLine>
                         <TimeLineAside>
                             <TimeLineIntro>
-                                <h1>  <ProfileIntro/>     Intro</h1>
+                                <h1>  <ProfileIntro />     Intro</h1>
                                 <ul>
                                     {profile?.works.map(work => (
                                         <li> <ProfileWork /> <p>{work.display}<Link>{work.company}</Link></p></li>
                                     ))}
                                     {profile?.educations.map(education => (
-                                        <li> <ProfileEducation/> <p>{education.display}<Link>{education.schoolName}</Link></p></li>
+                                        <li> <ProfileEducation /> <p>{education.display}<Link>{education.schoolName}</Link></p></li>
                                     ))}
                                     <li> <ProfileLivesIn /> <p> Lives in <Link>{profile?.location?.currentLocation}</Link></p></li>
                                     <li> <ProfileFromLocation /> <p> From <Link>{profile?.location?.fromLocation}</Link></p></li>
@@ -144,10 +158,95 @@ export default function Profile(props) {
                                 </ul>
                             </TimeLineIntro>
                             <TimeLinePhotos>
-                                <h1><ProfilePhotos/> Photos</h1>
+                                <h1><ProfilePhotos /> Photos</h1>
+                                <TimeLinePhotoList>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </TimeLinePhotoList>
                             </TimeLinePhotos>
                             <TimeLineFriends>
                                 <h1><ProfileFriends /> Friends</h1>
+                                <TimeLineFriendList>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Friend's name 1</p>
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Friend's name 1</p>
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Friend's name 1</p>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Lucas Marques Da Silva II</p>
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Friend's name 1</p>
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Friend's name 1</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Friend's name 1</p>
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Friend's name 1</p>
+                                            </td>
+                                            <td>
+                                                <img src={profile?.picture?.url} />
+                                                <p>Lucas Marques Da Silva II</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </TimeLineFriendList>
                             </TimeLineFriends>
                         </TimeLineAside>
                         <Posts>
