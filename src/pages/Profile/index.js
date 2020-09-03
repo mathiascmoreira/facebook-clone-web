@@ -53,8 +53,9 @@ import Post from '../../components/Post';
 export default function Profile(props) {
 
     const [profile, setProfile] = useState(null);
-    const [friends, setFriends] = useState(null);
+    const [friends, setFriends] = useState([]);
     const [posts, setPosts] = useState([]);
+    const [photos, setPhotos] = useState([]);
 
     useEffect(() => {
         async function loadPosts() {
@@ -81,16 +82,22 @@ export default function Profile(props) {
             const response = await api.get(`friendships`);
             const friends = response.data;
 
-            console.log('buscando lista de amigos', friends);
-
-
-
             setFriends(friends);
+
+            console.log('FIRST FRIEND', friends[0].friend)
+        }
+
+        async function loadPhotos() {
+            const response = await api.get(`photos`); 
+            const photos = response.data;
+
+            setPhotos(photos);
         }
 
         loadPosts();
         loadFriends();
-    }, [props.match.params.username])
+        loadPhotos();
+    }, [props.match.params.username, setPhotos])
 
 
     return (
@@ -161,38 +168,46 @@ export default function Profile(props) {
                                 <h1><ProfilePhotos /> Photos</h1>
                                 <TimeLinePhotoList>
                                     <tbody>
+                                        {/* photos.map(photo => (
+                                            var index = photos.indexOf(photo);
+
+                                            if(index == 0)
+
+
+
+                                        )) */}
                                         <tr>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[0]?.image.url} />
                                             </td>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[1]?.image.url} />
                                             </td>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[2]?.image.url} />
                                             </td>
                                         </tr>
 
                                         <tr>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[3]?.image.url} />
                                             </td>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[4]?.image.url} />
                                             </td>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[5]?.image.url} />
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[6]?.image.url} />
                                             </td>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[7]?.image.url} />
                                             </td>
                                             <td>
-                                                <img src={profile?.picture?.url} />
+                                                <img src={photos[8]?.image.url} />
                                             </td>
                                         </tr>
                                     </tbody>
@@ -204,45 +219,16 @@ export default function Profile(props) {
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Friend's name 1</p>
+                                                <img src={friends[0]?.friend.picture.url} />
+                                                <p>{friends[0]?.friend.name} {friends[0]?.friend.lastName}</p>
                                             </td>
                                             <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Friend's name 1</p>
+                                                <img src={friends[1]?.friend.picture.url} />
+                                                <p>{friends[1]?.friend.name} {friends[1]?.friend.lastName}</p>
                                             </td>
                                             <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Friend's name 1</p>
-                                            </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Lucas Marques Da Silva II</p>
-                                            </td>
-                                            <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Friend's name 1</p>
-                                            </td>
-                                            <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Friend's name 1</p>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Friend's name 1</p>
-                                            </td>
-                                            <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Friend's name 1</p>
-                                            </td>
-                                            <td>
-                                                <img src={profile?.picture?.url} />
-                                                <p>Lucas Marques Da Silva II</p>
+                                                <img src={friends[2]?.friend.picture.url} />
+                                                <p>{friends[2]?.friend.name} {friends[2]?.friend.lastName}</p>
                                             </td>
                                         </tr>
                                     </tbody>
