@@ -59,23 +59,44 @@ export default function Profile(props) {
 
     useEffect(() => {
         async function loadPosts() {
+            // const response = await api.get(`profiles/${props.match.params.username}`);
+            // const profile = response.data;
+
+
+            // profile.works.map(work => {
+            //     work.display = formatWorkToDisplay(work);
+            //     return work;
+            // });
+
+            // profile.educations.map(education => {
+            //     education.display = formatEducationToDisplay(education);
+            //     return education;
+            // });
+
+            // profile.relationship.display = formatRelationshipToDisplay(profile.relationship);
+
+            // 
+        }
+
+        async function loadProfile() {
             const response = await api.get(`profiles/${props.match.params.username}`);
             const profile = response.data;
 
-
-            profile.works.map(work => {
+            profile.works && profile.works.map(work => {
                 work.display = formatWorkToDisplay(work);
                 return work;
             });
 
-            profile.educations.map(education => {
+            profile.educations && profile.educations.map(education => {
                 education.display = formatEducationToDisplay(education);
                 return education;
             });
 
-            profile.relationship.display = formatRelationshipToDisplay(profile.relationship);
+            profile.relationship && (profile.relationship.display = formatRelationshipToDisplay(profile.relationship))
 
             setProfile(profile);
+
+            console.log('PROFILE lIST', profile);
         }
 
         async function loadFriends() {
@@ -83,17 +104,16 @@ export default function Profile(props) {
             const friends = response.data;
 
             setFriends(friends);
-
-            console.log('FIRST FRIEND', friends[0].friend)
         }
 
         async function loadPhotos() {
-            const response = await api.get(`photos`); 
+            const response = await api.get(`photos`);
             const photos = response.data;
 
             setPhotos(photos);
         }
 
+        loadProfile();
         loadPosts();
         loadFriends();
         loadPhotos();
@@ -158,24 +178,16 @@ export default function Profile(props) {
                                     {profile?.educations.map(education => (
                                         <li> <ProfileEducation /> <p>{education.display}<Link>{education.schoolName}</Link></p></li>
                                     ))}
-                                    <li> <ProfileLivesIn /> <p> Lives in <Link>{profile?.location?.currentLocation}</Link></p></li>
-                                    <li> <ProfileFromLocation /> <p> From <Link>{profile?.location?.fromLocation}</Link></p></li>
-                                    <li> <ProfileRelationshipStatus /> <p>{profile?.relationship?.display}</p></li>
-                                    <li> <ProfileJoinedAt /> <p>Joined at {profile?.joinedAt}</p></li>
+                                    {profile?.location?.currentLocation && <li> <ProfileLivesIn /> <p> Lives in <Link>{profile?.location?.currentLocation}</Link></p></li>}
+                                    {profile?.location?.fromLocation && <li> <ProfileFromLocation /> <p> From <Link>{profile?.location?.fromLocation}</Link></p></li>}
+                                    {profile?.relationship && <li><ProfileRelationshipStatus /> <p>{profile?.relationship?.display}</p></li>}
+                                    {profile?.joinedAt && <li> <ProfileJoinedAt /> <p>Joined at {profile?.joinedAt}</p></li>}
                                 </ul>
                             </TimeLineIntro>
                             <TimeLinePhotos>
                                 <h1><ProfilePhotos /> Photos</h1>
                                 <TimeLinePhotoList>
                                     <tbody>
-                                        {/* photos.map(photo => (
-                                            var index = photos.indexOf(photo);
-
-                                            if(index == 0)
-
-
-
-                                        )) */}
                                         <tr>
                                             <td>
                                                 <img src={photos[0]?.image.url} />
