@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -19,7 +19,17 @@ import {
 
 } from './styles';
 
+
+import {
+    formatPostDate
+} from '../../services/formatter';
+
 export default function ({ post }) {
+
+    useEffect(() => {
+     console.log(post);
+    }, [post]);
+
 
     function handleCommentsCountClick(post) {
 
@@ -35,10 +45,10 @@ export default function ({ post }) {
         <Container>
             <Header>
                 <section>
-                    {/* <img src={profile} /> */}
+                    <img src={post.user.picture.url} />
                     <span>
                         <h5>{post.user.name}</h5>
-                        <time>{post.postedAt} . {post.isPublic ? <SharedWithPublic /> : <SharedWithFriends />} </time>
+                        <time>{formatPostDate(post.createdAt)} . {post.isPublic ? <SharedWithPublic /> : <SharedWithFriends />} </time>
                     </span>
                 </section>
 
@@ -46,16 +56,18 @@ export default function ({ post }) {
             </Header>
 
             <Content>
-                {post.content}
+                <p>{post.content}</p>
+                <img src={post.image?.url} />
             </Content>
+            
 
             <Counts>
-                <LikesCount hasLikes={post.hasLikes}>
+                <LikesCount hasLikes={post.likesCount > 0}>
                     <LikeCount />
                     <p> {post.likesCount} </p>
                 </LikesCount>
-                <CommentsCount hasComments={post.hasComments}>
-                    <Link onClick={() => handleCommentsCountClick(post)}>{post.commentsCount} comentários</Link>
+                <CommentsCount hasComments={post.commentsCount > 0}>
+                    <Link onClick={() => handleCommentsCountClick(post)}>{post.commentsCount} comments</Link>
                 </CommentsCount>
             </Counts>
             <ActionButtons>
@@ -68,22 +80,23 @@ export default function ({ post }) {
                     Comment
                 </ActionButton>
             </ActionButtons>
-            <Comments showComments={post.showComments}>
+            <Comments showComments="true">
                 {
                     post.comments.map(comment => (
-
                         <Comment key={comment.id}>
-                            {/* <img src={profile} /> */}
+                            <img src={comment.user.picture.url} />
                             <span>
                                 <p>
                                     <Link>{comment.user.name}</Link> {comment.comment}
                                 </p>
-                                <Link>Like</Link>
+                                <span>
+                                    <Link>Like</Link>
+                                    <time>{formatPostDate(comment.createdAt)}</time>
+                                </span>
                             </span>
                         </Comment>
                     ))
                 }
-
                 <NewComment >
                     {/* <img src={profile} /> */}
                     <input placeholder="Write a comment..." />

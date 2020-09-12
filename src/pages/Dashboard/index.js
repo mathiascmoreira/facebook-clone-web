@@ -24,6 +24,8 @@ export default function Dashboard() {
 
    
     useEffect(() => {
+
+
         async function loadPosts() {
             const response = await api.get('newsfeed');
 
@@ -34,22 +36,25 @@ export default function Dashboard() {
                 post.showComments = true;
 
                 return post;
+
+                
             })
 
             setPosts(posts);
         }
 
         loadPosts();
-    }, [])
+    }, [user])
 
     return (
-        <Wrapper>
-            <Header />
-            <Posts>
-            { posts.map(post => <Post key={post.id} post={post} /> ) }
-            </Posts>
-               
-        </Wrapper>
+        <>
+            <Header profilePicture={user?.profilePhotoUrl}/>
+            <Scroll>
+                <Posts>
+                { posts.map(post => <Post key={post.id} post={post} /> ) }
+                </Posts>
+            </Scroll>
+        </>
     )
 }
 

@@ -1,3 +1,5 @@
+import { format } from 'date-fns';
+
 export function formatWorkToDisplay(work) {
     return work.currentlyWorking ?
         `${work.position ? work.position : 'Works'} ${work.company ? ' at ': ''}` :
@@ -28,3 +30,13 @@ export function formatRelationshipToDisplay(relationship) {
             return '';
     }
 }
+
+export function formatJoinedAtToDisplay(joinedAt) {
+    return format(new Date(joinedAt), "'Joined' MMMM yyyy");
+}
+
+export function formatPostDate(postedAt) {
+    return format(new Date(postedAt), "d MMMM, yyyy");
+}
+
+

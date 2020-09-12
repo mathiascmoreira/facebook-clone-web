@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import "react-perfect-scrollbar/dist/css/styles.css";
 
 export const Wrapper = styled.div`
  background: #e9ebee;
@@ -7,7 +8,6 @@ export const Wrapper = styled.div`
 `
 
 export const Scroll = styled(PerfectScrollbar)`
-   background: #e9ebee;
 `
 export const Post = styled.div`
 

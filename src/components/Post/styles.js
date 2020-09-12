@@ -3,7 +3,7 @@ import { darken, transparentize } from 'polished';
 
 export const Container = styled.div`
 
-    width: 500px;
+    width: 516px;
     margin: 0 auto;
     background: #fff;
     margin-bottom: 20px;
@@ -27,9 +27,12 @@ export const Header = styled.div`
         img {
             border-radius: 50%;
             margin-right: 10px;
+            height: 40px;
+            width: 40px;
         }
 
         span  {
+
             h5 {
                 font-weight: 600;
                 font-size: 14px;
@@ -56,6 +59,11 @@ export const Content = styled.div`
     font-size: 14px;
     font-weight: normal;
     line-height: 1.38;   
+
+    img {
+        margin-top: 12px;
+        width: 100%;
+    }
 `
 
 export const Counts = styled.div`
@@ -161,9 +169,11 @@ export const Comment = styled.div`
     display: flex;
     margin-bottom: 8px;
 
-   
-
     span {
+        span {
+            display: flex;
+            align-items: baseline;
+        }
         a {
             margin-left: 10px;
             color: #385898;
@@ -174,7 +184,15 @@ export const Comment = styled.div`
 
         a:hover {
                 text-decoration: underline;
-            }
+        }
+
+        time {
+            margin-top: 4px;
+            font-size: 12px;
+            font-weight: normal;
+            color: #616770;
+            margin-left: 5px;
+        }
 
         p {
             a {

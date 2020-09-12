@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import "react-perfect-scrollbar/dist/css/styles.css";
 
 import { darken } from 'polished';
 
 
 export const Scroll = styled(PerfectScrollbar)`
-   background: #e9ebee;
-   height: 100%;
+
 `
 
 export const Content = styled.div`

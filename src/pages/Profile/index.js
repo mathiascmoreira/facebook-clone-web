@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { format } from 'date-fns';
-
-import pt from 'date-fns/locale/pt';
-
 import Header from '../../components/Header';
 
 import api from '../../services/api';
 
-import { formatWorkToDisplay, formatEducationToDisplay, formatRelationshipToDisplay } from '../../services/formatter';
+import {
+    formatWorkToDisplay,
+    formatEducationToDisplay,
+    formatRelationshipToDisplay,
+    formatJoinedAtToDisplay
+} from '../../services/formatter';
 
 import {
     AddFriend,
@@ -24,7 +25,6 @@ import {
     ProfileLivesIn,
     ProfileFromLocation,
     ProfileRelationshipStatus,
-    ProfileFollowedBy,
     ProfileJoinedAt
 } from '../../components/Icons';
 
@@ -51,33 +51,14 @@ import Post from '../../components/Post';
 
 
 export default function Profile(props) {
-
     const [profile, setProfile] = useState(null);
     const [friends, setFriends] = useState([]);
     const [posts, setPosts] = useState([]);
     const [photos, setPhotos] = useState([]);
 
+    const user = useSelector(state => state.user.profile);
+
     useEffect(() => {
-        async function loadPosts() {
-            // const response = await api.get(`profiles/${props.match.params.username}`);
-            // const profile = response.data;
-
-
-            // profile.works.map(work => {
-            //     work.display = formatWorkToDisplay(work);
-            //     return work;
-            // });
-
-            // profile.educations.map(education => {
-            //     education.display = formatEducationToDisplay(education);
-            //     return education;
-            // });
-
-            // profile.relationship.display = formatRelationshipToDisplay(profile.relationship);
-
-            // 
-        }
-
         async function loadProfile() {
             const response = await api.get(`profiles/${props.match.params.username}`);
             const profile = response.data;
@@ -94,42 +75,63 @@ export default function Profile(props) {
 
             profile.relationship && (profile.relationship.display = formatRelationshipToDisplay(profile.relationship))
 
+            profile.joinedAt && (profile.joinedAtDisplay = formatJoinedAtToDisplay(profile.joinedAt));
+
             setProfile(profile);
-
-            console.log('PROFILE lIST', profile);
         }
 
-        async function loadFriends() {
-            const response = await api.get(`friendships`);
-            const friends = response.data;
+        loadProfile();
 
-            setFriends(friends);
+    }, [props.match.params.username]);
+
+    useEffect(() => {
+        async function loadPosts() {
+            const userId = profile && profile.id;
+
+            const posts = userId ? (await api.get(`posts/${userId}`)).data : []
+
+            setPosts(posts);
         }
 
+        loadPosts();
+    }, [profile]);
+
+    useEffect(() => {
         async function loadPhotos() {
-            const response = await api.get(`photos`);
+            const userId = profile && profile.id;
+
+            const response = await api.get(`photos/${userId}`);
             const photos = response.data;
 
             setPhotos(photos);
         }
 
-        loadProfile();
-        loadPosts();
-        loadFriends();
         loadPhotos();
-    }, [props.match.params.username, setPhotos])
+    }, [profile, props.match.params.username])
 
+    useEffect(() => {
+        const userId = profile && profile.id;
+
+        async function loadFriends() {
+            const response = await api.get(`friendships/${userId}`);
+            const friends = response.data;
+
+            setFriends(friends);
+        }
+
+        loadFriends();
+    }, [profile, props.match.params.username])
 
     return (
         <>
-            <Header profilePicture={profile?.picture?.url} />
+            <Header profilePicture={user?.profilePhotoUrl} />
 
             <Scroll>
                 <Content>
                     <CoverPhotoContainer coverPhoto={profile?.coverPhoto?.url}>
                         <ProfilePicture>
                             <span>
-                                <img src={profile?.picture?.url} />
+                                <img src={profile?.picture?.url} alt='' />
                             </span>
 
                             <p>{`${profile?.name} ${profile?.lastName}`}</p>
@@ -181,7 +183,7 @@ export default function Profile(props) {
                                     {profile?.location?.currentLocation && <li> <ProfileLivesIn /> <p> Lives in <Link>{profile?.location?.currentLocation}</Link></p></li>}
                                     {profile?.location?.fromLocation && <li> <ProfileFromLocation /> <p> From <Link>{profile?.location?.fromLocation}</Link></p></li>}
                                     {profile?.relationship && <li><ProfileRelationshipStatus /> <p>{profile?.relationship?.display}</p></li>}
-                                    {profile?.joinedAt && <li> <ProfileJoinedAt /> <p>Joined at {profile?.joinedAt}</p></li>}
+                                    {profile?.joinedAtDisplay && <li> <ProfileJoinedAt /> <p>{profile?.joinedAtDisplay}</p></li>}
                                 </ul>
                             </TimeLineIntro>
                             <TimeLinePhotos>
@@ -248,7 +250,7 @@ export default function Profile(props) {
                             </TimeLineFriends>
                         </TimeLineAside>
                         <Posts>
-                            {/* { posts.map(post => <Post key={post.id} post={post} /> ) } */}
+                            {posts.map(post => <Post key={post.id} post={post} />)}
                         </Posts>
                     </TimeLine>
                 </Content>
