@@ -30,10 +30,16 @@ import ProfileFromLocationImage from './Images/ProfileFromLocation.png';
 import ProfileRelationshipStatusImage from './Images/ProfileRelationshipStatus.png';
 import ProfileFollowedByImage from './Images/ProfileFollowedBy.png';
 import ProfileJoinedAtImage from './Images/ProfileJoinedAt.png';
-
-
-
-
+import EventsImage from './Images/EventsImage.png';
+import GroupsImage from './Images/GroupsImage.png';
+import MarketPlaceImage from './Images/MarketPlaceImage.png';
+import MessengerImage from './Images/MessengerImage.png';
+import NewsFeedImage from './Images/NewsFeedImage.png';
+import PagesImage from './Images/PagesImage.png';
+import WatchImage from './Images/WatchImage.png';
+import FeelingActivityImage from './Images/FeelingActivityImage.png';
+import PhotoVideoImage from './Images/PhotoVideoImage.png';
+import TagFriendsImage from './Images/TagFriendsImage.png';
 
 export const LikePostWhite = styled.i`
     display: inline-block;
@@ -214,4 +220,64 @@ export const ProfileJoinedAt = styled.i`
     width: 16px;
     height: 16px;
     background-image: url(${ProfileJoinedAtImage});
+`
+export const Events = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${EventsImage});
+`
+export const Groups = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${GroupsImage});
+`
+export const MarketPlace = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${MarketPlaceImage});
+`
+export const Messenger = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${MessengerImage});
+`
+export const NewsFeed = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${NewsFeedImage});
+`
+export const Pages = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${PagesImage});
+`
+export const Watch = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${WatchImage});
+`
+export const FeelingActivity = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${FeelingActivityImage});
+`
+export const PhotoVideo = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${PhotoVideoImage});
+`
+export const TagFriends = styled.i`
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${TagFriendsImage});
 `

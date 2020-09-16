@@ -6,7 +6,7 @@ export const Container = styled.div`
     width: 516px;
     margin: 0 auto;
     background: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     padding: 12px 12px 0;
 
     border: 1px solid #dddfe2;
@@ -22,7 +22,6 @@ export const Header = styled.div`
 
     section {
         display: flex;
-       
 
         img {
             border-radius: 50%;
@@ -59,6 +58,7 @@ export const Content = styled.div`
     font-size: 14px;
     font-weight: normal;
     line-height: 1.38;   
+    color: #1d2129;
 
     img {
         margin-top: 12px;

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Wrapper } from './styles';
 
 import Header from '../../components/Header';
 import Post from '../../components/Post';
@@ -9,9 +8,33 @@ import pt from 'date-fns/locale/pt';
 
 import {
     Scroll,
-    Posts
-   
+    Posts,
+    Container,
+    SideMenu,
+    SideMenuItem,
+    NewPost,
+    NewPostInput,
+    NewPostOptions,
+    Chat
+
 } from './styles';
+
+
+import {
+    Events,
+    Groups,
+    MarketPlace,
+    Messenger,
+    NewsFeed,
+    Pages,
+    Watch,
+    PhotoVideo,
+    TagFriends,
+    FeelingActivity
+} from '../../components/Icons';
+
+
+
 
 
 import api from '../../services/api';
@@ -22,7 +45,7 @@ export default function Dashboard() {
 
     const [posts, setPosts] = useState([]);
 
-   
+
     useEffect(() => {
 
 
@@ -36,8 +59,6 @@ export default function Dashboard() {
                 post.showComments = true;
 
                 return post;
-
-                
             })
 
             setPosts(posts);
@@ -48,13 +69,68 @@ export default function Dashboard() {
 
     return (
         <>
-            <Header profilePicture={user?.profilePhotoUrl}/>
-            <Scroll>
+            <Header profilePicture={user?.profilePhotoUrl} />
+            <Container>
+                <SideMenu>
+                    <SideMenuItem selected="true"><NewsFeed />News Feed</SideMenuItem>
+                    <SideMenuItem><Messenger />Messenger</SideMenuItem>
+                    <SideMenuItem><Watch />Watch</SideMenuItem>
+                    <SideMenuItem><MarketPlace />Marketplace</SideMenuItem>
+
+                    <h4>Explore</h4>
+
+                    <SideMenuItem><Groups />Groups</SideMenuItem>
+                    <SideMenuItem><Pages />Pages</SideMenuItem>
+                    <SideMenuItem><Events />Events</SideMenuItem>
+                </SideMenu>
                 <Posts>
-                { posts.map(post => <Post key={post.id} post={post} /> ) }
+                    <NewPost>
+                        <h1>Create Post</h1>
+                        <NewPostInput>
+                            <img src={user?.profilePhotoUrl} />
+                            <input placeholder={`What's on your mind, ${user?.name}?`} />
+                        </NewPostInput>
+                        <NewPostOptions>
+                            <button>
+                                <PhotoVideo />
+                                <p>Photo/Video</p>
+                            </button>
+                            <button>
+                                <TagFriends />
+                                <p>Tag Friends</p>
+                            </button>
+                            <button>
+                                <FeelingActivity />
+                                <p>Feeling/Activity </p>
+                            </button>
+                        </NewPostOptions>
+                    </NewPost>
+                    {posts.map(post => <Post key={post.id} post={post} />)}
                 </Posts>
-            </Scroll>
+                <Chat>
+                    <li>
+                        <span>
+                            <img src={user?.profilePhotoUrl} />
+                            <p>Person 1</p>
+                        </span>
+                        <time>50m</time>
+                    </li>
+                    <li>
+                        <span>
+                            <img src={user?.profilePhotoUrl} />
+                            <p>Person 2</p>
+                        </span>
+                        <time>50m</time>
+                    </li>
+                    <li>
+                        <span>
+                            <img src={user?.profilePhotoUrl} />
+                            <p>Person 3</p>
+                        </span>
+                        <time>50m</time>
+                    </li>
+                </Chat>
+            </Container>
         </>
     )
 }
-

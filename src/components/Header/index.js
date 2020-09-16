@@ -37,7 +37,7 @@ export default function Header({profilePicture}) {
                         <FacebookIcon />
                     </Link>
                     <SearchField>
-                        <input placeholder="Pesquisar" />
+                        <input placeholder="Search" />
                         <Link>
                             <Search />
                         </Link>
@@ -49,13 +49,13 @@ export default function Header({profilePicture}) {
                         <span>{name}</span>
                     </TextButton>
                     <TextButton>
-                        <span>Página inicial</span>
+                        <span>Home</span>
                     </TextButton>
                     <TextButton>
-                        <span>Encontrar amigos</span>
+                        <span>Find Friends</span>
                     </TextButton>
                     <TextButton>
-                        <span>Criar</span>
+                        <span>Create</span>
                         {/* <CreatePopup>
                             <h4>Criar</h4>
                             <CreatePoputItem>

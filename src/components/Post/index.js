@@ -26,9 +26,9 @@ import {
 
 export default function ({ post }) {
 
-    useEffect(() => {
-     console.log(post);
-    }, [post]);
+    // useEffect(() => {
+    //  console.log(post);
+    // }, [post]);
 
 
     function handleCommentsCountClick(post) {
@@ -36,10 +36,10 @@ export default function ({ post }) {
         post.showComments = !post.showComments;
     }
 
-    function handleCommentButtonClick(post) {
+    // function handleCommentButtonClick(post) {
 
-        post.showComments = true;
-    }
+    //     post.showComments = true;
+    // }
 
     return (
         <Container>
