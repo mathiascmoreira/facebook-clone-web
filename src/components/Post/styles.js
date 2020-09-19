@@ -83,8 +83,6 @@ export const LikesCount = styled.section`
         margin-right: 4px;
     }
 `
-
-
 export const CommentsCount = styled.section`
     a {
         color: #606770;
@@ -127,13 +125,11 @@ export const ActionButton = styled.button`
     }
 ` 
 
-
-
-
 export const Comments = styled.div`
     margin-top: 10px;
     display: ${props => props.showComments ? 'block' : 'none'};
- img {
+
+    img {
         border-radius: 50%;
         height: 32px;
         width: 32px;
@@ -142,12 +138,12 @@ export const Comments = styled.div`
 `
 
 export const NewComment = styled.div`
+    position: relative;
     display: flex;
     font-size: 12px;
     margin-bottom: 8px;
 
     input {
-        
         width: 100%;
         background-color: #f2f3f5;
         border: 1px solid #ccd0d5;
@@ -163,6 +159,16 @@ export const NewComment = styled.div`
             color: ${transparentize(0.5 ,'#8d949e')}
         }
     }
+
+    span {
+        position: absolute;
+        top: 9px;
+        right: 13px;
+
+        i {
+            margin: 0 5px;
+        }
+    }
 `
 
 export const Comment = styled.div`
@@ -170,9 +176,11 @@ export const Comment = styled.div`
     margin-bottom: 8px;
 
     span {
+        flex: 1;
         span {
             display: flex;
             align-items: baseline;
+            
         }
         a {
             margin-left: 10px;

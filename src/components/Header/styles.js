@@ -229,6 +229,20 @@ export const OtherOptionsPopup = styled.ul`
     box-shadow: 0 3px 8px rgba(0, 0, 0, .3);
     margin: 0;
 
+    li {
+            padding-left: 34px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            text-align: left;
+            font-size: 12px;
+            cursor: pointer;
+
+            &:hover {
+                background: #4267b2;
+                color: #fff;
+            }
+        }
+
     &::before {
         content: '';
         position: absolute;
@@ -245,6 +259,8 @@ export const OtherOptionsPopup = styled.ul`
         position: relative;
         padding: 5px 0;
 
+      
+
         &::after {
             content: '';
             position: absolute;
@@ -257,19 +273,5 @@ export const OtherOptionsPopup = styled.ul`
 
     }
 
-    li {
-        padding-left: 34px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-        text-align: left;
-        font-size: 12px;
-
-        &:hover {
-            background: #4267b2;
-            color: #fff;
-        }
-    }
-
-
-
+   
 `

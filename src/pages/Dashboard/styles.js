@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Scroll = styled(PerfectScrollbar)`
 `
 
-export const Posts = styled.div `
+export const Posts = styled.div`
     height: 100vh;
     overflow: auto;
 `
@@ -45,13 +45,11 @@ export const SideMenuItem = styled.li`
     &:hover {
         background-color: #f5f6f7;
         border: 1px solid #dddfe2;
-        
     }
 
     i {
         margin-right: 5px;
     }   
-    
 `
 
 export const NewPost = styled.div`
@@ -128,57 +126,102 @@ export const NewPostOptions = styled.span`
 `
 
 
-export const Chat = styled.ul`
+export const Chat = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: fixed;
+    right: 0;
+    width: 235px;
+    height: calc(100vh - 42px);
+    padding-right: 15px;
     box-shadow: 1px 0 0 #f0f0f2 inset;
     border-left: 1px solid rgba(0, 0, 0, .4);
     border-left-color: #ccc;
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    top: 0;
-    right: 0;
-    width: 235px;
-    height: 100%;
-    padding-right: 14px;
+`
 
+export const ChatContacts = styled.ul`
     li {
-        padding-left: 8px;
-        padding-top: 8px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        padding-left: 8px;
+        padding-top: 8px;
         cursor: pointer;
 
-        &:hover {
+        &:hover { 
             background: ${darken(0.03, '#e9ebee')}
+        }
+
+        span {
+            display: flex;
+            align-items: center;
+            font-size: 12px;
+            line-height: 16px;
+            color: #1d2129;
+        }
+
+        img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        time {
+            color: #90949c;
+            font-size: 11px;
+            margin-right: 15px;
+        }
+    }
+`
+
+export const ChatOnlineIndicator = styled.span`
+    background: #42b72a;
+    border-radius: 50%;
+    height: 6px;
+    width: 6px;
+    margin-right: 15px;
+`
+
+export const ChatFooter = styled.footer`
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #f5f6f7;
+`
+
+
+
+export const ChatFooterSearchField = styled.span`
+    position: relative;
+
+    input {
+        width: 100%;
+        height: 30px;
+        border: none;
+        border-radius: 5px;
+        padding-left: 28px;
+        background-color: #f5f6f7;
+        
+        &::placeholder {
+            color: #8d949e;            
         }
     }
 
-    span {
-        display: flex;
-        align-items: center;
-        font-size: 12px;
-        line-height: 16px;
-        color: #1d2129;
+    i {
+        position: absolute;
+        top: 10px;
+        left: 8px;
     }
+`
 
+export const ChatFooterOptions = styled.span`
+    display: flex;
+    justify-content: space-between;
 
-    img {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        margin-right: 8px;
+    i {
+        margin: 0 5px;
+        cursor: pointer;
     }
-
-    time {
-        color: #90949c;
-        display: inline-block;
-        font-size: 11px;
-        line-height: 12px;
-        text-align: right;
-        margin-right: 15px;
-    }
-  
-    
-    
 `

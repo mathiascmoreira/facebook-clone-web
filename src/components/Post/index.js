@@ -1,8 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 
-import {CommentPost, LikePostWhite, LikePostBlue, LikeCount, SharedWithPublic, SharedWithFriends, PostEllipsis} from '../Icons';
+import {
+    CommentPost,
+    SharePost,
+    LikePostWhite,
+    LikePostBlue,
+    LikeCount,
+    SharedWithPublic,
+    SharedWithFriends,
+    PostEllipsis,
+    CommentAttach,
+    CommentInsertEmoji,
+    CommentPostGif,
+    CommentPostSticker,
+} from '../Icons';
 
 import {
     Container,
@@ -26,6 +40,7 @@ import {
 
 export default function ({ post }) {
 
+    const user = useSelector(state => state.user.profile);
     // useEffect(() => {
     //  console.log(post);
     // }, [post]);
@@ -36,10 +51,10 @@ export default function ({ post }) {
         post.showComments = !post.showComments;
     }
 
-    // function handleCommentButtonClick(post) {
+    function handleCommentButtonClick(post) {
 
-    //     post.showComments = true;
-    // }
+        post.showComments = true;
+    }
 
     return (
         <Container>
@@ -59,8 +74,6 @@ export default function ({ post }) {
                 <p>{post.content}</p>
                 <img src={post.image?.url} />
             </Content>
-            
-
             <Counts>
                 <LikesCount hasLikes={post.likesCount > 0}>
                     <LikeCount />
@@ -72,15 +85,19 @@ export default function ({ post }) {
             </Counts>
             <ActionButtons>
                 <ActionButton hasOwnLike={post.hasOwnLike}>
-                    {post.hasOwnLike? <LikePostBlue /> : <LikePostWhite />}
+                    {post.hasOwnLike ? <LikePostBlue /> : <LikePostWhite />}
                     Like
                 </ActionButton>
                 <ActionButton onClick={() => handleCommentsCountClick(post)}>
-                    <CommentPost/>
+                    <CommentPost />
                     Comment
                 </ActionButton>
+                <ActionButton>
+                    <SharePost />
+                    Share
+                </ActionButton>
             </ActionButtons>
-            <Comments showComments="true">
+            <Comments showComments={post.showComments}>
                 {
                     post.comments.map(comment => (
                         <Comment key={comment.id}>
@@ -98,10 +115,15 @@ export default function ({ post }) {
                     ))
                 }
                 <NewComment >
-                    {/* <img src={profile} /> */}
+                    <img src={user?.profilePhotoUrl} />
                     <input placeholder="Write a comment..." />
+                    <span>
+                        <CommentInsertEmoji />
+                        <CommentAttach />
+                        <CommentPostGif />
+                        <CommentPostSticker />
+                    </span>
                 </NewComment>
-
             </Comments>
         </Container>
     )

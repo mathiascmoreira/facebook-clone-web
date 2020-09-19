@@ -23,7 +23,12 @@ import {
     QuickHelp, 
     ArrowDown, 
     FacebookIcon, 
-    Search 
+    Search,
+    HeaderCreateAd,
+    HeaderCreateEvent,
+    HeaderCreateGroup,
+    HeaderCreateMarketPlace,
+    HeaderCreatePage
 } from '../Icons';
 
 export default function Header({profilePicture}) {
@@ -57,49 +62,49 @@ export default function Header({profilePicture}) {
                     <TextButton>
                         <span>Create</span>
                         {/* <CreatePopup>
-                            <h4>Criar</h4>
+                            <h4>Create</h4>
                             <CreatePoputItem>
                                 <span>
-                                    <GrFlagFill />
+                                    <HeaderCreatePage />
                                     <section>
-                                        <strong>Página</strong>
-                                        <p>Entra em contato e partilha com clientes ou fãs</p>
+                                        <strong>Page</strong>
+                                        <p>Connect and share with customers or fans</p>
                                     </section>
                                 </span>
                             </CreatePoputItem>
                             <CreatePoputItem>
                                 <span>
-                                    <FaBullhorn />
+                                    <HeaderCreateAd />
                                     <section>
-                                        <strong>Anúncio</strong>
-                                        <p>Faz publicidade ao teu negócio, à tua marca ou à tua organização</p>
+                                        <strong>Ad</strong>
+                                        <p>Advertise your business, brand or organization</p>
                                     </section>
                                 </span>
                             </CreatePoputItem>
                             <CreatePoputItem>
                                 <span>
-                                    <FaUsers />
+                                    <HeaderCreateGroup />
                                     <section>
-                                        <strong>Grupo</strong>
-                                        <p>Encontra pessoas que partilhem os mesmos interesses</p>
+                                        <strong>Group</strong>
+                                        <p>Find people with shared interests</p>
                                     </section>
                                 </span>
                             </CreatePoputItem>
                             <CreatePoputItem>
                                 <span>
-                                    <FaCalendarAlt />
+                                    <HeaderCreateEvent />
                                     <section>
-                                        <strong>Evento</strong>
-                                        <p>Junta as pessoas num evento público ou privado</p>
+                                        <strong>Event</strong>
+                                        <p>Bring people together with a public or private event</p>
                                     </section>
                                 </span>
                             </CreatePoputItem>
                             <CreatePoputItem>
                                 <span>
-                                    <FaStore />
+                                    <HeaderCreateMarketPlace />
                                     <section>
-                                        <strong>Anúncio do Marketplace</strong>
-                                        <p>Vende artigos às pessoas da tua comunidade</p>
+                                        <strong>Marketplace listing</strong>
+                                        <p>Sell items to people in your community</p>
                                     </section>
                                 </span>
                             </CreatePoputItem>
@@ -121,20 +126,20 @@ export default function Header({profilePicture}) {
                     </IconButton>
                     <IconButton>
                         <ArrowDown />
-                        {/*  <OtherOptionsPopup>
+                         {/* <OtherOptionsPopup>
                             <section>
-                                <li>Seus grupos</li>
+                                <li>Your Groups</li>
                             </section>
                             <section>
-                                <li>Publicidade no Facebook</li>
+                                <li>Advertising on Facebook</li>
                             </section>
                             <section>
-                                <li>Registro de atividades</li>
-                                <li>Preferências do Feed de Notic...</li>
-                                <li>Configurações</li>
+                                <li>Activity Log</li>
+                                <li>News Feed Preferences</li>
+                                <li>Settings</li>
                             </section>
                             <section>
-                                <li>Sair</li>
+                                <li>Log Out</li>
                             </section>
                         </OtherOptionsPopup> */}
                     </IconButton>

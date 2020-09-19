@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import CommentPostImage from './Images/CommentPost.png';
+import SharePostImage from './Images/SharePostImage.png';
 import LikePostBlueImage from './Images/LikePostBlue.png';
 import LikePostWhiteImage from './Images/LikePostWhite.png';
 import LikeCountImage from './Images/LikeCount.png';
@@ -40,6 +41,20 @@ import WatchImage from './Images/WatchImage.png';
 import FeelingActivityImage from './Images/FeelingActivityImage.png';
 import PhotoVideoImage from './Images/PhotoVideoImage.png';
 import TagFriendsImage from './Images/TagFriendsImage.png';
+import ChatCreatNewGroupImage from './Images/ChatCreatNewGroupImage.png';
+import ChatCreatNewRoomImage from './Images/ChatCreatNewRoomImage.png';
+import ChatNewMessageImage from './Images/ChatNewMessageImage.png';
+import ChatOptionsImage from './Images/ChatOptionsImage.png';
+import ChatSearchImage from './Images/ChatSearchImage.png';
+import CommentAttachImage from './Images/CommentAttachImage.png';
+import CommentInsertEmojiImage from './Images/CommentInsertEmojiImage.png';
+import CommentPostGifImage from './Images/CommentPostGifImage.png';
+import CommentPostStickerImage from './Images/CommentPostStickerImage.png';
+import HeaderCreateAdImage from './Images/HeaderCreateAdImage.png';
+import HeaderCreateEventImage from './Images/HeaderCreateEventImage.png'; 
+import HeaderCreateGroupImage from './Images/HeaderCreateGroupImage.png'; 
+import HeaderCreateMarketPlaceImage from './Images/HeaderCreateMarketPlaceImage.png'; 
+import HeaderCreatePageImage from './Images/HeaderCreatePageImage.png';
 
 export const LikePostWhite = styled.i`
     display: inline-block;
@@ -64,6 +79,12 @@ export const CommentPost = styled.i`
     width: 18px;
     height: 18px;
     background-image: url(${CommentPostImage});
+`
+export const SharePost = styled.i`
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-image: url(${SharePostImage});
 `
 export const FriendRequests = styled.i`
     display: inline-block;
@@ -280,4 +301,88 @@ export const TagFriends = styled.i`
     width: 20px;
     height: 20px;
     background-image: url(${TagFriendsImage});
+`
+export const ChatCreatNewGroup = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 18px;
+    background-image: url(${ChatCreatNewGroupImage});
+`
+export const ChatCreatNewRoom = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${ChatCreatNewRoomImage});
+`
+export const ChatNewMessage = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${ChatNewMessageImage});
+`
+export const ChatOptions = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${ChatOptionsImage});
+`
+export const ChatSearch = styled.i`
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-image: url(${ChatSearchImage});
+`
+export const CommentAttach = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${CommentAttachImage});
+`
+export const CommentInsertEmoji = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${CommentInsertEmojiImage});
+`
+export const CommentPostGif = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${CommentPostGifImage});
+`
+export const CommentPostSticker = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${CommentPostStickerImage});
+`
+export const HeaderCreateAd = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${HeaderCreateAdImage});
+`
+export const HeaderCreateEvent = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${HeaderCreateEventImage});
+`
+export const HeaderCreateGroup = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${HeaderCreateGroupImage});
+`
+export const HeaderCreateMarketPlace = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${HeaderCreateMarketPlaceImage});
+`
+export const HeaderCreatePage = styled.i`
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-image: url(${HeaderCreatePageImage});
 `

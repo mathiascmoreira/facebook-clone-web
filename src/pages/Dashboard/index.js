@@ -15,7 +15,12 @@ import {
     NewPost,
     NewPostInput,
     NewPostOptions,
-    Chat
+    Chat,
+    ChatContacts,
+    ChatFooter,
+    ChatOnlineIndicator,
+    ChatFooterSearchField,
+    ChatFooterOptions
 
 } from './styles';
 
@@ -30,7 +35,12 @@ import {
     Watch,
     PhotoVideo,
     TagFriends,
-    FeelingActivity
+    FeelingActivity,
+    ChatCreatNewGroup,
+    ChatCreatNewRoom,
+    ChatNewMessage,
+    ChatOptions,
+    ChatSearch   
 } from '../../components/Icons';
 
 
@@ -83,6 +93,44 @@ export default function Dashboard() {
                     <SideMenuItem><Pages />Pages</SideMenuItem>
                     <SideMenuItem><Events />Events</SideMenuItem>
                 </SideMenu>
+
+                <Chat>
+                    <ChatContacts>
+                        <li>
+                            <span>
+                                <img src={user?.profilePhotoUrl} />
+                                <p>Person 1</p>
+                            </span>
+                            <ChatOnlineIndicator />
+                        </li>
+                        <li>
+                            <span>
+                                <img src={user?.profilePhotoUrl} />
+                                <p>Person 2</p>
+                            </span>
+                            <time>50m</time>
+                        </li>
+                        <li>
+                            <span>
+                                <img src={user?.profilePhotoUrl} />
+                                <p>Person 3</p>
+                            </span>
+                            <time>50m</time>
+                        </li>
+                    </ChatContacts>
+                    <ChatFooter>
+                        <ChatFooterSearchField>
+                            <ChatSearch />
+                            <input placeholder="Search" />
+                        </ChatFooterSearchField>
+                        <ChatFooterOptions>
+                            <ChatNewMessage /> 
+                            <ChatCreatNewGroup />
+                            <ChatCreatNewRoom />
+                            <ChatOptions />
+                        </ChatFooterOptions>
+                    </ChatFooter>
+                </Chat>
                 <Posts>
                     <NewPost>
                         <h1>Create Post</h1>
@@ -107,29 +155,7 @@ export default function Dashboard() {
                     </NewPost>
                     {posts.map(post => <Post key={post.id} post={post} />)}
                 </Posts>
-                <Chat>
-                    <li>
-                        <span>
-                            <img src={user?.profilePhotoUrl} />
-                            <p>Person 1</p>
-                        </span>
-                        <time>50m</time>
-                    </li>
-                    <li>
-                        <span>
-                            <img src={user?.profilePhotoUrl} />
-                            <p>Person 2</p>
-                        </span>
-                        <time>50m</time>
-                    </li>
-                    <li>
-                        <span>
-                            <img src={user?.profilePhotoUrl} />
-                            <p>Person 3</p>
-                        </span>
-                        <time>50m</time>
-                    </li>
-                </Chat>
+                
             </Container>
         </>
     )

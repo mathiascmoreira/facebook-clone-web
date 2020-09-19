@@ -7,7 +7,6 @@ import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 import Login from '../pages/Login';
 
-
 export default function Routes() {
     return (
         <Switch>
